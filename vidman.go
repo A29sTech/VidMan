@@ -45,21 +45,21 @@ func main() {
 	var isAdmin bool
 
 	// Parse Command Line.
-	flag.StringVar(&lib, "lib", "", "-lib 'videopath' including *.db")
-	flag.StringVar(&port, "port", "3333", "-port 'http-server-port'")
-	flag.StringVar(&home, "home", "", "-home 'index.html file require in home dir.")
-	flag.BoolVar(&isAdmin, "admin", false, "-admin , for write, update and delete Acsess.")
+	flag.StringVar(&lib, "lib", "", "'videopath' including Videos.db")
+	flag.StringVar(&port, "port", "3333", "'http-server-port' Defualt' 3333")
+	flag.StringVar(&home, "app", "", "-home 'index.html file require in home dir.")
+	flag.BoolVar(&isAdmin, "admin", false, "write, update and delete Acsess.")
 	flag.Parse()
 
 	// Lib Arg Check ;
 	if lib == "" {
-		fmt.Println("lib path is not provided as, -lib libpath")
+		fmt.Println("lib path is not provided as, -lib 'libpath'")
 		return
 	}
 
 	// Setup DataBase ;
 	var err error
-	if db, err = core.OpenViDB("Videos.db"); err != nil {
+	if db, err = core.OpenViDB(path.Join(lib, "Videos.db")); err != nil {
 		fmt.Println(err)
 		return
 	}
