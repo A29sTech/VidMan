@@ -21,7 +21,7 @@ A Local Video Managing System.
 /cdn/filename : get video file
 /cdn/thumbnails/filename.png : get thumbnail file
 ```
-## Api for Anyone -
+## Open Api -
 > Get video by id -
 > `/api/Video/{id:[0-9]+}` // Method : GET
 
