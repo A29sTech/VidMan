@@ -199,7 +199,7 @@ func allVideosAPI(w http.ResponseWriter, r *http.Request) {
 	vidataSlice := []core.ViData{}
 
 	// Retrive All Matched Query To 'vidataSlice' ;
-	err := db.Table(core.TableName).Offset(offset).Limit(limit).Find(&vidataSlice).Error
+	err := db.Table(core.TableName).Offset(offset).Limit(limit).Order("indx desc").Find(&vidataSlice).Error
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "%s", err.Error())
